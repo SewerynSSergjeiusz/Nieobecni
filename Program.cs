@@ -52,6 +52,20 @@ namespace ConsoleApp7
                     }
                     break;
                 }
+                if(n == 1)
+                {
+
+                    Console.WriteLine("Pobieranie pliku z internetu");
+                  
+             
+                    
+                        WebClient.DownloadFile("https://s3.zylowski.net/public/input/2.txt", "2.txt");
+                    
+   
+
+
+
+                }
             }
             
         }
