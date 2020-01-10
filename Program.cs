@@ -397,6 +397,55 @@ namespace ConsoleApp7
                     Console.WriteLine("Ilosc zdañ w wyrazow: " + iloscwyrazow);
 
                 }
+                if (n == 7)
+                {
+                    try
+                    {
+                        string text = System.IO.File.ReadAllText(@"2.txt");
+                        int sentences = 0;
+                        int punMarks = 0;
+                        int letters = 0;
+                        int words = 0;
+                        foreach (char znak in text)
+                        {
+
+                            if (znak == '.' || znak == '!' || znak == '?')
+                            {
+                                sentences++;
+
+                            }
+                            if (znak == ',' || znak == '.' || znak == ';' || Convert.ToString(znak) == "'" || znak == '?' || znak == '!' || znak == '-' || znak == ':')
+                            {
+                                punMarks++;
+
+                            }
+
+                            if (Convert.ToString(znak) != "," && Convert.ToString(znak) != "." && Convert.ToString(znak) != ";" && Convert.ToString(znak) != "'" && Convert.ToString(znak) != "?" && Convert.ToString(znak) != "!" && Convert.ToString(znak) != "-" && Convert.ToString(znak) != ":")
+                            {
+                                letters++;
+
+                            }
+
+                            if (Convert.ToString(znak) == " ")
+                            {
+                                words++;
+
+                            }
+
+                        }
+                        string path = @"statystyki.txt";
+                        StreamWriter sw = new StreamWriter(path);
+                        sw.WriteLine("ILość liter w pliku = " + letters);
+                        sw.WriteLine("ILość wyrazów w pliku = " + words);
+                        sw.WriteLine("ILość znakow interpunkcyjnych  w pliku = " + punMarks);
+                        sw.WriteLine("ILość zdań w pliku = " + sentences);
+                        sw.Close();
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+                }
 
 
             }
