@@ -269,6 +269,134 @@ namespace ConsoleApp7
 
 
                 }
+                if (n == 6)
+                {
+                    string text = System.IO.File.ReadAllText(@"2.txt");
+                    Console.Clear();
+                    try     //liczenie samogłosek
+                    {
+
+                        if (text != null)
+                        {
+
+                            int[] character = new int[(int)char.MaxValue];
+
+                            foreach (char tp in text)
+                            {
+
+                                character[(int)tp]++;
+                            }
+
+                            Console.WriteLine("SAMOGŁOSKI: ");
+                            for (int i = 0; i < (int)char.MaxValue; i++)
+                            {
+
+
+                                if ((char)i == 'a' || (char)i == 'A' || (char)i == 'E' || (char)i == 'e' || (char)i == 'i' || (char)i == 'I' || (char)i == 'O' || (char)i == 'o' || (char)i == 'u' || (char)i == 'U' || (char)i == 'y' || (char)i == 'Y')
+                                {
+                                    if (character[i] > 0 && char.IsLetterOrDigit((char)i))
+                                    {
+                                        Console.WriteLine("{0},{1}", (char)i, character[i]);
+                                    }
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+
+
+
+                    try             //liczenie spółgłosek
+                    {
+
+                        if (text != null)
+                        {
+
+                            int[] character = new int[(int)char.MaxValue];
+
+                            foreach (char tp in text)
+                            {
+
+                                character[(int)tp]++;
+                            }
+
+                            Console.WriteLine("SPÓŁGŁOSKI: ");
+                            for (int i = 0; i < (int)char.MaxValue; i++)
+                            {
+
+
+                                if ((char)i != 'a' && (char)i != 'A' && (char)i != 'E' && (char)i != 'e' && (char)i != 'i' && (char)i != 'I' && (char)i != 'O' && (char)i != 'o' && (char)i != 'u' && (char)i != 'U' && (char)i != 'y' && (char)i != 'Y' && (char)i != '1' && (char)i != '2' && (char)i != '3' && (char)i != '4')
+                                {
+                                    if (character[i] > 0 && char.IsLetterOrDigit((char)i))
+                                    {
+                                        Console.WriteLine("{0},{1}", (char)i, character[i]);
+                                    }
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+                    int iloscwyrazow = 0;
+                    int ilosczdan = 0;
+
+                    try
+                    {
+                        foreach (char znak in text)
+                        {
+
+                            if (znak == '.' || znak == '!' || znak == '?')
+                            {
+                                ilosczdan++;
+
+                            }
+
+                        }
+
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("błąd przy liczeniu zdan");
+
+                    }
+                    Console.WriteLine("Ilosc zdañ w pliku: " + ilosczdan);
+
+
+                    try
+                    {
+                        foreach (char znak in text)
+                        {
+
+                            if (znak == ' ')
+                            {
+                                iloscwyrazow++;
+
+                            }
+
+                        }
+
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("błąd przy liczeniu wyrazów");
+
+                    }
+                    Console.WriteLine("Ilosc zdañ w wyrazow: " + iloscwyrazow);
+
+                }
 
 
             }
