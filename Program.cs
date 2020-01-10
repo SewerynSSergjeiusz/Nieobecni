@@ -166,13 +166,12 @@ namespace ConsoleApp7
                         if (text != null)
                         {
 
-
                             if (text == null)
                             {
                                 Console.WriteLine("nie pobrano pliku");
                                 break;
                             }
-                            string[] source = text.Split(new char[] { '.', '?', '!', ' ', ';', ':',  }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] source = text.Split(new char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
                             int words = 0;
                             foreach (string word in source)
                             {
@@ -187,10 +186,11 @@ namespace ConsoleApp7
 
                         }
                     }
-                    catch (FileNotFoundException e);
+                    catch (FileNotFoundException e)
                     {
                         Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
                     }
+                    
 
 
                 }
