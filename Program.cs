@@ -82,6 +82,7 @@ namespace ConsoleApp7
                         catch (WebException e)
                         {
                             Console.WriteLine("Podaj prawidłowe dane");
+                            
                         }
                     }
                     else
@@ -148,6 +149,45 @@ namespace ConsoleApp7
                     }
 
                     catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+
+
+                }
+                if (n == 3)
+                {
+                    //counting letters
+                    Console.Clear();
+                    try
+                    {
+                        string text = System.IO.File.ReadAllText(@"2.txt");
+
+                        if (text != null)
+                        {
+
+
+                            if (text == null)
+                            {
+                                Console.WriteLine("nie pobrano pliku");
+                                break;
+                            }
+                            string[] source = text.Split(new char[] { '.', '?', '!', ' ', ';', ':',  }, StringSplitOptions.RemoveEmptyEntries);
+                            int words = 0;
+                            foreach (string word in source)
+                            {
+                                if (word.Length > 1)
+                                {
+                                    words++;
+                                }
+
+                            }
+
+                            Console.WriteLine("Ilość wyrazów w pliku = " + words);
+
+                        }
+                    }
+                    catch (FileNotFoundException e);
                     {
                         Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
                     }
