@@ -26,7 +26,34 @@ namespace ConsoleApp7
                 Console.WriteLine("7. Zapisz statystyki z punktów 2-5 do pliku statystyki.txt");
                 Console.WriteLine("8. Wyjście z programu");
                 n = Convert.ToInt32(Console.ReadLine());
+
+                if(n == 8 )
+                {
+                    //delete files
+                    try
+                    {
+                        System.IO.File.Delete(@"2.txt");
+                    }
+                    catch (System.IO.IOException e)
+                    {
+
+                        Console.WriteLine("Bład przy usuwaniu pliku");
+                        return;
+                    }
+                    try
+                    {
+                        System.IO.File.Delete(@"statystyki.txt");
+                 
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine("Błąd przy usuwaniu pliku");
+                        return;
+                    }
+                    break;
+                }
             }
+            
         }
     }
 
