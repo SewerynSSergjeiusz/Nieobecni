@@ -16,7 +16,7 @@ namespace ConsoleApp7
             int n = 0;
             while (n != 8)
             {
-                /* for issue #1 editing text in comment */
+                /*menu without problems */
                 Console.WriteLine("1. Pobierz plik");
                 Console.WriteLine("2. Zlicz liczbę liter w podanym pliku");
                 Console.WriteLine("3. Zlicz liczbę wyrazów w pliku");
@@ -66,6 +66,7 @@ namespace ConsoleApp7
                         Console.WriteLine("Plik został pobrany prawidłowo");
                     }
                     */
+                    //downloading files
                     Console.WriteLine("Czy pobrać plik z internetu ? [T/N]");
                     char t = Convert.ToChar(Console.ReadLine());
                     if (t == 't' | t == 'T')
@@ -82,7 +83,7 @@ namespace ConsoleApp7
                         catch (WebException e)
                         {
                             Console.WriteLine("Podaj prawidłowe dane");
-                            
+
                         }
                     }
                     else
@@ -104,14 +105,14 @@ namespace ConsoleApp7
                     }
 
                 }
-
+                //counting letters
                 if (n == 2)
                 {
 
                     Console.Clear();
                     try
                     {
-                        /* changing comment for automatic close issue */
+                        
                         string text = System.IO.File.ReadAllText(@"2.txt");
                         if (text != null)
                         {
@@ -122,7 +123,7 @@ namespace ConsoleApp7
                             }
                             int vowel = 0;
                             int consonants = 0;
-                            int sum=0;
+                            int sum = 0;
                             foreach (char y in text)
                             {
                                 string x = Convert.ToString(y);
@@ -143,7 +144,7 @@ namespace ConsoleApp7
                             }
                             sum = vowel + consonants;
                             Console.WriteLine("Ilość liter w pliku : " + sum);
-                            
+
                         }
 
                     }
@@ -157,7 +158,7 @@ namespace ConsoleApp7
                 }
                 if (n == 3)
                 {
-                    //counting letters
+                    //counting words
                     Console.Clear();
                     try
                     {
@@ -190,19 +191,87 @@ namespace ConsoleApp7
                     {
                         Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
                     }
-                    
+
+
+
+                }
+                if (n == 4)
+                {
+                    // counting punctuation marks
+                    try
+                    {
+                        string text = System.IO.File.ReadAllText(@"2.txt");
+                        if (text != null)
+                        {
+                            if (text == null)
+                            {
+                                Console.WriteLine("nie pobrano pliku");
+                                break;
+                            }
+                            int tmp = 0;
+                            foreach (char znak in text)
+                            {
+                                string x = Convert.ToString(znak);
+                                if (x == "," || x == "." || x == "?")
+                                {
+                                    tmp++;
+
+                                }
+
+                            }
+
+                            Console.WriteLine("Ilość znaków interpunkcyjnych(?,.) = " + tmp);
+                        }
+
+                    }
+
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+
+
+                }
+                if (n == 5)
+                {
+                    //counting sentences
+                    Console.Clear();
+                    try
+                    {
+                        string text = System.IO.File.ReadAllText(@"2.txt");
+                        if (text != null)
+                        {
+                            int tmp = 0;
+                            for (int i = 0; i < text.Length; i++)
+                            {
+
+                                if (text[i] == '.' || text[i] == '?')
+                                {
+                                    tmp++;
+                                }
+
+                            }
+                            Console.WriteLine("Ilość zdań w pliku = " + tmp);
+
+                        }
+
+
+
+
+                    }
+
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine("Błąd, nie znaleziono pliku, najpierw pobierz plik");
+                    }
+
+
 
 
                 }
 
 
-
-
-
             }
-
-
-
         }
     }
 }
